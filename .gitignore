@@ -11,3 +11,4 @@ xml_main
 config_main
 libconfig
 *.txt
+tags
