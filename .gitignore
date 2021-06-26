@@ -1,0 +1,13 @@
+*.o
+/lib
+log
+project
+*.xml
+*.json
+*.cfg
+main_doc
+json_doc
+xml_main
+config_main
+libconfig
+*.txt

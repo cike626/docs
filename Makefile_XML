@@ -1,0 +1,30 @@
+#CROSS_COMPILE = arm-linux-
+CROSS_COMPILE =
+
+
+TAR =  xml_main 
+
+OBJS = doc_test_xml.o  doc_manage.o
+#OBJS += libconfig_doc.o	  
+#OBJS += json_doc.o 
+OBJS += xml_doc.o 
+CC = $(CROSS_COMPILE)gcc
+
+CFLAGS = -O0 -Wall -g -Wstrict-prototypes -Wno-unused-function -I/usr/include/libxml2 -I ./include
+
+LDFLAGS = -lpthread -lxml2 -ljson-c -lconfig
+
+$(TAR):        $(OBJS)
+	$(CC) $(CFLAGS) -o $(TAR) $(OBJS) $(LDFLAGS)
+
+clean:
+	rm -rf *.o $(TAR)
+
+ifneq ("$V", "1")
+ Q=@
+endif
+%.o : %.c
+	@echo "\033[1;35m $(CC) $@\033[0m"
+	$(Q) $(CC) -pipe $(CFLAGS) -c -o $@ $<
+
+
